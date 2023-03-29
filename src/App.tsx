@@ -1,5 +1,11 @@
+import SearchAppBar from "./components/AppBar";
+
 function App() {
-  return <div>Hello world!</div>;
+  return (
+    <>
+      <SearchAppBar />
+    </>
+  );
 }
 
 export default App;
