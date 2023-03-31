@@ -10,6 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchComp from "./app-bar-components/SearchComp";
+import RightButtons from "./app-bar-components/RightButtons";
 
 ////
 
@@ -35,29 +36,12 @@ export default function PrimarySearchAppBar() {
           >
             SHIKALOV STORE
           </Typography>
-          <SearchComp />
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={1} color="error">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
 
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
+          <SearchComp />
+
+          <Box sx={{ flexGrow: 1 }} />
+
+          <RightButtons />
         </Toolbar>
       </AppBar>
     </Box>
