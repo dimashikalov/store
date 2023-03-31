@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { STORE_URL } from "../../utils/api";
 import { ILogin } from "../../models/ILogin";
+import { IUser } from "../../models/IUser";
 
 interface IToken {
   token: string;
@@ -12,7 +13,7 @@ export const authApi = createApi({
     baseUrl: `${STORE_URL}/auth/`,
   }),
   endpoints: (build) => ({
-    login: build.query<IToken, ILogin>({
+    loginUser: build.query<IToken, ILogin>({
       query: (data: ILogin) => ({
         url: "login",
         method: "POST",
@@ -22,4 +23,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginQuery } = authApi;
+export const { useLoginUserQuery } = authApi;

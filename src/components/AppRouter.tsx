@@ -4,7 +4,7 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 
 const AppRouter = () => {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
 
   const navigate = useNavigate();
   return (
