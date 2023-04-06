@@ -1,0 +1,15 @@
+import axios from "axios";
+import { AppDispatch } from "../store";
+import { STORE_URL } from "../../utils/api";
+import { IProduct } from "../../models/IProduct";
+import { productsSlice } from "./productsSlice";
+
+export const fetchProducts = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(productsSlice.actions.productsFetching());
+    const responce = await axios.get<IProduct[]>(`${STORE_URL}/products`);
+    dispatch(productsSlice.actions.productsFetchingSuccess(responce.data));
+  } catch (e: any) {
+    dispatch(productsSlice.actions.productsFetchingError(e.message));
+  }
+};
