@@ -1,13 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 ////
-const RightButtons = () => {
+const RightButtons: FC = () => {
   const isAuth = false;
+
+  const navigate = useNavigate();
+
+  const handleLoginClick = (): void => {
+    navigate("/login");
+  };
   return (
     <>
       {isAuth ? (
@@ -34,8 +41,8 @@ const RightButtons = () => {
         </Box>
       ) : (
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
-          <Button variant="outlined" color="inherit">
-            Login
+          <Button variant="outlined" color="inherit" onClick={handleLoginClick}>
+            Войти
           </Button>
         </Box>
       )}

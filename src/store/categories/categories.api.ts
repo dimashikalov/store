@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { STORE_URL } from "../../utils/api";
-import { IUser } from "../../models/IUser";
-import { ServerResponse } from "http";
 
 export interface ICategories {
   categoties: string[];

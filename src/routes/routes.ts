@@ -1,10 +1,8 @@
 import BasketPage from "../pages/BasketPage";
 import CategoriesPage from "../pages/CategoriesPage";
-import LoginPage from "../pages/LoginPage";
 import MainPage from "../pages/MainPage";
 import ProductItemPage from "../pages/ProductItemPage";
 import ProfilePage from "../pages/ProfilePage";
-import RegistrationPage from "../pages/RegistrationPage";
 import {
   BASKET_ROUTE,
   CATEGORIES_ROUTE,
@@ -38,14 +36,6 @@ export const publicRoutes = [
   {
     path: PRODUCTS_ITEM_ROUTE + "/:id",
     Element: ProductItemPage,
-  },
-  {
-    path: LOGIN_ROUTE,
-    Element: LoginPage,
-  },
-  {
-    path: REGISTRATION_ROUTE,
-    Element: RegistrationPage,
   },
   {
     path: "*",
