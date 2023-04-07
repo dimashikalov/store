@@ -1,10 +1,7 @@
-import { Container, Grid, Paper, Typography } from "@mui/material";
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { fetchProducts } from "../../store/products/productsActionCreator";
-import CardItem from "../cardItem/CardItem";
+import { Container, Grid, Typography } from "@mui/material";
+import { useAppSelector } from "../../hooks/redux";
 import { CardList } from "../cardList/CardList";
+import Loader from "../loader/Loader";
 
 const Main = () => {
   const { products, isLoading, error } = useAppSelector(
@@ -18,7 +15,11 @@ const Main = () => {
       </Typography>
       <Grid container>
         <CardList arrayProducts={products} />
-        {isLoading && <h1>Loading...</h1>}
+        {isLoading && (
+          <Grid container justifyContent="center" alignItems="center">
+            <Loader />
+          </Grid>
+        )}
       </Grid>
     </Container>
   );
