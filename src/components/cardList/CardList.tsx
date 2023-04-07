@@ -9,7 +9,7 @@ interface CardListProps {
 
 export const CardList: FC<CardListProps> = ({ arrayProducts }) => {
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} justifyContent="center" alignItems="center">
       {arrayProducts.map((product) => (
         <Grid item key={product.id}>
           <CardItem product={product} />

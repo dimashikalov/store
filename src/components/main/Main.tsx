@@ -1,4 +1,4 @@
-import { Container, Paper } from "@mui/material";
+import { Container, Grid, Paper, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
@@ -13,8 +13,13 @@ const Main = () => {
 
   return (
     <Container fixed>
-      <CardList arrayProducts={products} />
-      {isLoading && <h1>Loading...</h1>}
+      <Typography variant="h4" textAlign="center" margin="10px">
+        Главная страница магазина
+      </Typography>
+      <Grid container>
+        <CardList arrayProducts={products} />
+        {isLoading && <h1>Loading...</h1>}
+      </Grid>
     </Container>
   );
 };
