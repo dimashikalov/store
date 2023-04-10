@@ -12,10 +12,15 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchComp from "./app-bar-components/SearchComp";
 import RightButtons from "./app-bar-components/RightButtons";
 import { Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 ////
 
 export default function PrimarySearchAppBar() {
+  const navigate = useNavigate();
+  const homeRedirect = () => {
+    navigate("/");
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -31,10 +36,11 @@ export default function PrimarySearchAppBar() {
               <MenuIcon />
             </IconButton>
             <Typography
+              onClick={homeRedirect}
               variant="h6"
               noWrap
               component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
+              sx={{ display: { xs: "none", sm: "block", cursor: "pointer" } }}
             >
               SHIKALOV STORE
             </Typography>

@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 ////
 const RightButtons: FC = () => {
-  const isAuth = false;
+  const isAuth = true;
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const RightButtons: FC = () => {
             aria-label="show 17 new notifications"
             color="inherit"
           >
-            <Badge badgeContent={1} color="error">
+            <Badge badgeContent={3} color="error">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>

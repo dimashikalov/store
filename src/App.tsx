@@ -5,13 +5,10 @@ import { fetchProducts } from "./store/products/productsActionCreator";
 import { useAppDispatch } from "./hooks/redux";
 
 function App() {
-  
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-
-  console.log("app");
 
   return (
     <>

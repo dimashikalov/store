@@ -1,7 +1,7 @@
-import React from "react";
+import ProductComp from "../components/product/ProductComp";
 
 const ProductItemPage = () => {
-  return <div>ProductItemPage</div>;
+  return <ProductComp />;
 };
 
 export default ProductItemPage;

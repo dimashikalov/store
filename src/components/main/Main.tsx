@@ -2,8 +2,9 @@ import { Container, Grid, Typography } from "@mui/material";
 import { useAppSelector } from "../../hooks/redux";
 import { CardList } from "../cardList/CardList";
 import Loader from "../loader/Loader";
+import { FC } from "react";
 
-const Main = () => {
+const Main: FC = () => {
   const { products, isLoading, error } = useAppSelector(
     (state) => state.products
   );

@@ -5,6 +5,7 @@ export interface ProductsState {
   isLoading: boolean;
   error: string;
   products: IProduct[];
+  product?: IProduct;
 }
 
 const initialState: ProductsState = {
@@ -28,6 +29,11 @@ export const productsSlice = createSlice({
     productsFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    productFetchingSingleSuccess(state, action: PayloadAction<IProduct>) {
+      state.isLoading = false;
+      state.error = "";
+      state.product = action.payload;
     },
   },
 });

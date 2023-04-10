@@ -13,3 +13,16 @@ export const fetchProducts = () => async (dispatch: AppDispatch) => {
     dispatch(productsSlice.actions.productsFetchingError(e.message));
   }
 };
+
+export const fetchSingleProducts =
+  (id: number) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(productsSlice.actions.productsFetching());
+      const responce = await axios.get<IProduct>(`${STORE_URL}/products/${id}`);
+      dispatch(
+        productsSlice.actions.productFetchingSingleSuccess(responce.data)
+      );
+    } catch (e: any) {
+      dispatch(productsSlice.actions.productsFetchingError(e.message));
+    }
+  };
