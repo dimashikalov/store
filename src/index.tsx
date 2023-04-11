@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { setupStore } from "./store/store";
+import BasketProvider from "./context/basket/basketContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,8 +12,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={setupStore}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <BasketProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </BasketProvider>
   </Provider>
 );

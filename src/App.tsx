@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import SearchAppBar from "./components/AppBar/AppBar";
 import AppRouter from "./components/AppRouter";
 import { fetchProducts } from "./store/products/productsActionCreator";
@@ -10,6 +10,7 @@ function App() {
     dispatch(fetchProducts());
   }, []);
 
+  
   return (
     <>
       <SearchAppBar />

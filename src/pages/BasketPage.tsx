@@ -1,7 +1,8 @@
 import React from "react";
+import BasketComp from "../components/basket/BasketComp";
 
 const BasketPage = () => {
-  return <div>Basket</div>;
+  return <BasketComp />;
 };
 
 export default BasketPage;
