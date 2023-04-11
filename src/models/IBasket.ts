@@ -8,5 +8,5 @@ export interface IBasketItem {
 export interface IBasketContext {
   basketItems: IBasketItem[];
   addBasketItem: (basketItem: IProduct) => void;
-  deleteBasketItem: (basketItem: IProduct) => void;
+  deleteBasketItem?: (basketItem: IBasketItem) => void;
 }

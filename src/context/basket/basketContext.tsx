@@ -34,7 +34,27 @@ const BasketProvider: FC<IBasketProvider> = ({ children }) => {
     };
     setBasketItemsList([...basketItems, basketItem]);
   };
-  const deleteBasketItem = (product: IProduct) => {};
+
+  const deleteBasketItem = (basketItem: IBasketItem) => {
+    let basketItemFind = basketItems.find(
+      (i) => i.basketItem.id === basketItem.basketItem.id
+    );
+    if (basketItemFind?.count === 1) {
+      return setBasketItemsList(
+        basketItems.filter(
+          (i) => i.basketItem.id !== basketItemFind?.basketItem.id
+        )
+      );
+    }
+    if (basketItemFind) {
+      basketItems.filter((item) => {
+        if (item.basketItem.id === basketItemFind?.basketItem.id) {
+          item.count--;
+          setBasketItemsList([...basketItems]);
+        }
+      });
+    }
+  };
   return (
     <BasketContext.Provider
       value={{ basketItems, addBasketItem, deleteBasketItem }}

@@ -18,8 +18,6 @@ const RightButtons: FC = () => {
   const navigate = useNavigate();
 
   const handleNavigateClick = (path: string): void => {
-    console.log("path", path);
-
     navigate(path);
   };
   return (

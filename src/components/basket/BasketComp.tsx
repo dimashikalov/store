@@ -1,9 +1,17 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import React, { FC } from "react";
 import { useBasketContext } from "../../hooks/context";
+import { IProduct } from "../../models/IProduct";
+import { IBasketItem } from "../../models/IBasket";
 
 const BasketComp: FC = () => {
-  const { basketItems } = useBasketContext();
+  const { basketItems, deleteBasketItem } = useBasketContext();
+
+  const handleDeleteBasketItem = (item: IBasketItem) => {
+    deleteBasketItem?.(item);
+  };
+  console.log("basket");
+
   return (
     <Container fixed>
       <Typography variant="h4" textAlign="center" margin="10px">
@@ -16,6 +24,9 @@ const BasketComp: FC = () => {
             <Typography variant="h6">
               Количество товара: {item.count}
             </Typography>
+            <Button variant="text" onClick={() => handleDeleteBasketItem(item)}>
+              Удалить товар
+            </Button>
             <hr />
           </Grid>
         ))}
