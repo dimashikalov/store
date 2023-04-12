@@ -10,13 +10,21 @@ import {
   Typography,
 } from "@mui/material";
 import Loader from "../loader/Loader";
+import { useBasketContext } from "../../hooks/context";
 
 const ProductComp: FC = () => {
   const { product, isLoading, error } = useAppSelector(
     (state) => state.products
   );
+  const { basketItems, addBasketItem } = useBasketContext();
   const dispatch = useAppDispatch();
   const params = useParams();
+
+  const handleAddToBasket = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (product !== undefined) {
+      addBasketItem?.(product);
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchSingleProducts(Number(params.id)));
@@ -51,7 +59,7 @@ const ProductComp: FC = () => {
           </Typography>
         </Grid>
         <Grid item mt={"50px"}>
-          <Button size="large" color="primary">
+          <Button size="large" color="primary" onClick={handleAddToBasket}>
             Добавить в корзину
           </Button>
         </Grid>

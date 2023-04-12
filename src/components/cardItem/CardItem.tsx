@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 import { IProduct } from "../../models/IProduct";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -6,10 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import "./cardItemCss.css";
-import { log } from "console";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTS_ITEM_ROUTE } from "../../utils/consts";
-import { BasketContext } from "../../context/basket/basketContext";
 import { useBasketContext } from "../../hooks/context";
 ////
 interface CardItemProps {
@@ -18,13 +16,13 @@ interface CardItemProps {
 
 const CardItem: FC<CardItemProps> = ({ product }) => {
   const navigate = useNavigate();
-  const { basketItems, addBasketItem } = useBasketContext();
+  const { addBasketItem } = useBasketContext();
 
   const navigateToCardItem = () => {
     navigate(`${PRODUCTS_ITEM_ROUTE}/${product.id}`);
   };
 
-  const handleAddToBasket = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleAddToBasket = () => {
     addBasketItem(product);
   };
 

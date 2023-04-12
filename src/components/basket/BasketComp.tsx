@@ -1,35 +1,53 @@
 import { Button, Container, Grid, Typography } from "@mui/material";
-import React, { FC } from "react";
+import { FC, useMemo } from "react";
 import { useBasketContext } from "../../hooks/context";
-import { IProduct } from "../../models/IProduct";
+import BasketItem from "../basketItem/BasketItem";
 import { IBasketItem } from "../../models/IBasket";
 
 const BasketComp: FC = () => {
-  const { basketItems, deleteBasketItem } = useBasketContext();
-
-  const handleDeleteBasketItem = (item: IBasketItem) => {
-    deleteBasketItem?.(item);
-  };
   console.log("basket");
+  const { basketItems } = useBasketContext();
+  const totalCost: number = useMemo(() => {
+    let result = basketItems.reduce((sum: number, item: IBasketItem) => {
+      return sum + item.count * item.basketItem.price;
+    }, 0);
+    return Math.ceil(result);
+  }, [basketItems]);
 
   return (
     <Container fixed>
       <Typography variant="h4" textAlign="center" margin="10px">
         Корзина товаров
       </Typography>
-      <Grid container spacing={3} justifyContent="center" alignItems="center">
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        alignItems="center"
+        mt={5}
+      >
         {basketItems.map((item) => (
-          <Grid item>
-            <Typography variant="h6">{item.basketItem.title}</Typography>
-            <Typography variant="h6">
-              Количество товара: {item.count}
-            </Typography>
-            <Button variant="text" onClick={() => handleDeleteBasketItem(item)}>
-              Удалить товар
-            </Button>
-            <hr />
-          </Grid>
+          <BasketItem item={item} key={item.basketItem.id} />
         ))}
+      </Grid>
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        alignItems="center"
+        flexDirection={"column"}
+        mt={5}
+      >
+        <Grid>
+          <Typography>
+            Общая стоимость заказа: {totalCost ? totalCost : 0}
+          </Typography>
+        </Grid>
+        <Grid>
+          <Button variant="contained" sx={{ width: "300px" }}>
+            Купить
+          </Button>
+        </Grid>
       </Grid>
     </Container>
   );

@@ -12,10 +12,6 @@ interface IBasketProvider {
   children: React.ReactNode | React.ReactElement;
 }
 
-const findItem = (array: any, item: number): boolean => {
-  return array.includes(item);
-};
-
 const BasketProvider: FC<IBasketProvider> = ({ children }) => {
   const [basketItems, setBasketItemsList] = useState<IBasketItem[]>([]);
 
@@ -25,7 +21,13 @@ const BasketProvider: FC<IBasketProvider> = ({ children }) => {
     );
 
     if (basketItemFind) {
-      return basketItemFind.count++;
+      basketItems.map((item) => {
+        if (item.basketItem.id === basketItemFind?.basketItem.id) {
+          item.count++;
+          setBasketItemsList([...basketItems]);
+        }
+      });
+      return;
     }
 
     let basketItem: IBasketItem = {
@@ -47,7 +49,7 @@ const BasketProvider: FC<IBasketProvider> = ({ children }) => {
       );
     }
     if (basketItemFind) {
-      basketItems.filter((item) => {
+      basketItems.map((item) => {
         if (item.basketItem.id === basketItemFind?.basketItem.id) {
           item.count--;
           setBasketItemsList([...basketItems]);
