@@ -13,6 +13,9 @@ import SearchComp from "./app-bar-components/SearchComp";
 import RightButtons from "./app-bar-components/RightButtons";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../hooks/redux";
+import { useState } from "react";
+import LeftMenu from "./app-bar-components/LeftMenu";
 
 ////
 
@@ -21,20 +24,13 @@ export default function PrimarySearchAppBar() {
   const homeRedirect = () => {
     navigate("/");
   };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Container>
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
+            <LeftMenu />
             <Typography
               onClick={homeRedirect}
               variant="h6"

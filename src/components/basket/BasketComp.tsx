@@ -6,6 +6,7 @@ import { IBasketItem } from "../../models/IBasket";
 
 const BasketComp: FC = () => {
   const { basketItems } = useBasketContext();
+
   const totalCost: number = useMemo(() => {
     let result = basketItems.reduce((sum: number, item: IBasketItem) => {
       return sum + item.count * item.basketItem.price;

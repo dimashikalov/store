@@ -6,12 +6,14 @@ export interface ProductsState {
   error: string;
   products: IProduct[];
   product?: IProduct;
+  categories?: string[];
 }
 
 const initialState: ProductsState = {
   isLoading: false,
   error: "",
   products: [],
+  categories: [],
 };
 
 export const productsSlice = createSlice({
@@ -34,6 +36,11 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = "";
       state.product = action.payload;
+    },
+    productFetchingCategorySuccess(state, action: PayloadAction<string[]>) {
+      state.isLoading = false;
+      state.error = "";
+      state.categories = action.payload;
     },
   },
 });

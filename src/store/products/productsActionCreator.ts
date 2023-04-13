@@ -26,3 +26,17 @@ export const fetchSingleProducts =
       dispatch(productsSlice.actions.productsFetchingError(e.message));
     }
   };
+
+export const fetchCategories = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(productsSlice.actions.productsFetching());
+    const responce = await axios.get<string[]>(
+      `${STORE_URL}/products/categories`
+    );
+    dispatch(
+      productsSlice.actions.productFetchingCategorySuccess(responce.data)
+    );
+  } catch (e: any) {
+    dispatch(productsSlice.actions.productsFetchingError(e.message));
+  }
+};
