@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchSingleProducts } from "../../store/products/productsActionCreator";
 import { useParams } from "react-router-dom";
@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import Loader from "../loader/Loader";
 import { useBasketContext } from "../../hooks/context";
+import AlertPopUp from "../alertPopUp/AlertPopUp";
 
 const ProductComp: FC = () => {
   const { product, isLoading, error } = useAppSelector(
@@ -20,9 +21,26 @@ const ProductComp: FC = () => {
   const dispatch = useAppDispatch();
   const params = useParams();
 
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const handleAddToBasket = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (product !== undefined) {
       addBasketItem?.(product);
+      handleClick();
     }
   };
 
@@ -64,6 +82,7 @@ const ProductComp: FC = () => {
           </Button>
         </Grid>
       </Grid>
+      {open && <AlertPopUp open={open} handleClose={handleClose} />}
     </Container>
   );
 };
