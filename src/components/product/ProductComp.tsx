@@ -14,10 +14,8 @@ import { useBasketContext } from "../../hooks/context";
 import AlertPopUp from "../alertPopUp/AlertPopUp";
 
 const ProductComp: FC = () => {
-  const { product, isLoading, error } = useAppSelector(
-    (state) => state.products
-  );
-  const { basketItems, addBasketItem } = useBasketContext();
+  const { product, isLoading } = useAppSelector((state) => state.products);
+  const { addBasketItem } = useBasketContext();
   const dispatch = useAppDispatch();
   const params = useParams();
 
@@ -37,7 +35,7 @@ const ProductComp: FC = () => {
 
     setOpen(false);
   };
-  const handleAddToBasket = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleAddToBasket = () => {
     if (product !== undefined) {
       addBasketItem?.(product);
       handleClick();

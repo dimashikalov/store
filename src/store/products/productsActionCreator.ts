@@ -40,3 +40,20 @@ export const fetchCategories = () => async (dispatch: AppDispatch) => {
     dispatch(productsSlice.actions.productsFetchingError(e.message));
   }
 };
+
+export const fetchCategoryProducts =
+  (path: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(productsSlice.actions.productsFetching());
+      const responce = await axios.get<IProduct[]>(
+        `${STORE_URL}/products/category/${path}`
+      );
+      dispatch(
+        productsSlice.actions.productFetchingCategoryProductsSuccess(
+          responce.data
+        )
+      );
+    } catch (e: any) {
+      dispatch(productsSlice.actions.productsFetchingError(e.message));
+    }
+  };

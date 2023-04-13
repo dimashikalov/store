@@ -1,7 +1,8 @@
 import React from "react";
+import CategoryProductsComp from "../components/categories/CategoryProductsComp";
 
 const CategoriesPage = () => {
-  return <div>CategoriesPage</div>;
+  return <CategoryProductsComp />;
 };
 
 export default CategoriesPage;

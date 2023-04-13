@@ -1,28 +1,21 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
-import Badge from "@mui/material/Badge";
-import MenuIcon from "@mui/icons-material/Menu";
-
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchComp from "./app-bar-components/SearchComp";
 import RightButtons from "./app-bar-components/RightButtons";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../hooks/redux";
-import { useState } from "react";
 import LeftMenu from "./app-bar-components/LeftMenu";
+import { MAIN_ROUTE } from "../../utils/consts";
 
 ////
 
 export default function PrimarySearchAppBar() {
   const navigate = useNavigate();
   const homeRedirect = () => {
-    navigate("/");
+    navigate(MAIN_ROUTE);
   };
 
   return (
