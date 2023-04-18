@@ -2,6 +2,9 @@ import React, { FC, useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import AlertPopUp from "../../alertPopUp/AlertPopUp";
+import { getSearchProducts } from "../../../store/products/productsActionCreator";
 /////
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -45,9 +48,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const SearchComp: FC = () => {
   const [value, setValue] = useState("");
+  const { workArray } = useAppSelector((state) => state.products);
+
+  const dispatch = useAppDispatch();
+
   const handleValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.currentTarget.value);
-    console.log(e.currentTarget.value);
+  };
+
+  const handleSearch = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      if (value === "") return workArray;
+      console.log("seacrh", value);
+
+      const searchProduct = workArray.filter((item) => {
+        return item.title.toLowerCase().includes(value);
+      });
+
+      dispatch(getSearchProducts(searchProduct));
+      setValue("");
+    }
   };
 
   return (
@@ -56,10 +76,11 @@ const SearchComp: FC = () => {
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
-        placeholder="Search…"
+        placeholder="Search on page…"
         inputProps={{ "aria-label": "search" }}
         value={value}
         onChange={handleValue}
+        onKeyDown={handleSearch}
       />
     </Search>
   );

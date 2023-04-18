@@ -9,6 +9,7 @@ export const fetchProducts = () => async (dispatch: AppDispatch) => {
     dispatch(productsSlice.actions.productsFetching());
     const responce = await axios.get<IProduct[]>(`${STORE_URL}/products`);
     dispatch(productsSlice.actions.productsFetchingSuccess(responce.data));
+    dispatch(productsSlice.actions.currentArrayWithProducts());
   } catch (e: any) {
     dispatch(productsSlice.actions.productsFetchingError(e.message));
   }
@@ -53,7 +54,26 @@ export const fetchCategoryProducts =
           responce.data
         )
       );
+      dispatch(productsSlice.actions.currentArrayWithCategoryProducts());
     } catch (e: any) {
       dispatch(productsSlice.actions.productsFetchingError(e.message));
     }
+  };
+
+export const getCurrentArrayWithProducts =
+  (pathname: string) => (dispatch: AppDispatch) => {
+    try {
+      if (pathname === "/") {
+        return dispatch(productsSlice.actions.currentArrayWithProducts());
+      }
+
+      return dispatch(productsSlice.actions.currentArrayWithCategoryProducts());
+    } catch (error) {
+      console.log("err", error);
+    }
+  };
+
+export const getSearchProducts =
+  (searchArray: IProduct[]) => (dispatch: AppDispatch) => {
+    dispatch(productsSlice.actions.searchProducts(searchArray));
   };

@@ -8,12 +8,14 @@ export interface ProductsState {
   product?: IProduct;
   categories?: string[];
   categoryProduct?: IProduct[];
+  workArray: IProduct[];
 }
 
 const initialState: ProductsState = {
   isLoading: false,
   error: "",
   products: [],
+  workArray: [],
   categories: [],
   categoryProduct: [],
 };
@@ -51,6 +53,19 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = "";
       state.categoryProduct = action.payload;
+    },
+    currentArrayWithProducts(state) {
+      state.workArray = state.products;
+    },
+    currentArrayWithCategoryProducts(state) {
+      if (state.categoryProduct) {
+        state.workArray = state.categoryProduct;
+      }
+    },
+    searchProducts(state, action: PayloadAction<IProduct[]>) {
+      if (state.categoryProduct) {
+        state.workArray = action.payload;
+      }
     },
   },
 });

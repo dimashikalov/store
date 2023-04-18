@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { authRoutes, publicRoutes } from "../routes/routes";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import MainPage from "../pages/MainPage";
 
 const AppRouter = () => {
   const [isAuth, setIsAuth] = useState(true);

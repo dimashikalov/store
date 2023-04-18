@@ -40,7 +40,7 @@ const BasketComp: FC = () => {
       >
         <Grid>
           <Typography>
-            Общая стоимость заказа: {totalCost ? totalCost : 0}
+            Общая стоимость заказа: {totalCost ? totalCost : 0} y.e
           </Typography>
         </Grid>
         <Grid>
