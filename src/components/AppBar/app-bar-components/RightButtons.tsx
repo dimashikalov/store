@@ -13,19 +13,25 @@ import {
   PROFILE_ROUTE,
 } from "../../../utils/consts";
 import { useBasketContext } from "../../../hooks/context";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { authSlice } from "../../../store/auth/authSlice";
 ////
 const RightButtons: FC = () => {
-  const isAuth = true;
+  const { auth } = useAppSelector((state) => state.auth);
   const { basketItems } = useBasketContext();
-
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleNavigateClick = (path: string): void => {
     navigate(path);
   };
+
+  const handleAuthExit = () => {
+    dispatch(authSlice.actions.authExit());
+  };
   return (
     <>
-      {isAuth ? (
+      {auth ? (
         <Box
           sx={{
             display: { xs: "none", md: "flex" },
@@ -63,7 +69,7 @@ const RightButtons: FC = () => {
             aria-haspopup="true"
             color="inherit"
             sx={{ marginLeft: "10px" }}
-            // onClick={() => handleNavigateClick(PROFILE_ROUTE)}
+            onClick={handleAuthExit}
           >
             <ExitToAppIcon />
           </IconButton>

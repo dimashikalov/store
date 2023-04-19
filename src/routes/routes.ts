@@ -1,5 +1,6 @@
 import BasketPage from "../pages/BasketPage";
 import CategoriesPage from "../pages/CategoriesPage";
+import LoginPage from "../pages/LoginPage";
 import MainPage from "../pages/MainPage";
 import ProductItemPage from "../pages/ProductItemPage";
 import ProfilePage from "../pages/ProfilePage";
@@ -28,6 +29,10 @@ export const publicRoutes = [
   {
     path: MAIN_ROUTE,
     Element: MainPage,
+  },
+  {
+    path: LOGIN_ROUTE,
+    Element: LoginPage,
   },
   {
     path: CATEGORIES_ROUTE + "/:id",
