@@ -3,7 +3,7 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import AlertPopUp from "../../alertPopUp/AlertPopUp";
+import AlertPopUp from "../../popUps/SuccessPopUp";
 import { getSearchProducts } from "../../../store/products/productsActionCreator";
 /////
 const Search = styled("div")(({ theme }) => ({

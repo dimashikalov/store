@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import Loader from "../loader/Loader";
 import { useBasketContext } from "../../hooks/context";
-import AlertPopUp from "../alertPopUp/AlertPopUp";
+import SuccessPopUp from "../popUps/SuccessPopUp";
 
 const ProductComp: FC = () => {
   const { product, isLoading } = useAppSelector((state) => state.products);
@@ -80,7 +80,7 @@ const ProductComp: FC = () => {
           </Button>
         </Grid>
       </Grid>
-      {open && <AlertPopUp open={open} handleClose={handleClose} />}
+      {open && <SuccessPopUp open={open} handleClose={handleClose} />}
     </Container>
   );
 };

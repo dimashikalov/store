@@ -9,7 +9,7 @@ import "./cardItemCss.css";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTS_ITEM_ROUTE } from "../../utils/consts";
 import { useBasketContext } from "../../hooks/context";
-import AlertPopUp from "../alertPopUp/AlertPopUp";
+import SuccessPopUp from "../popUps/SuccessPopUp";
 ////
 interface CardItemProps {
   product: IProduct;
@@ -90,7 +90,7 @@ const CardItem: FC<CardItemProps> = ({ product }) => {
           </Button>
         </CardActions>
       </Card>
-      {open && <AlertPopUp open={open} handleClose={handleClose} />}
+      {open && <SuccessPopUp open={open} handleClose={handleClose} />}
     </>
   );
 };

@@ -11,12 +11,12 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-interface AlertPopUpProps {
+interface SuccessPopUpProps {
   handleClose: () => void;
   open: boolean;
 }
 
-export default function AlertPopUp({ handleClose, open }: AlertPopUpProps) {
+export default function SuccessPopUp({ handleClose, open }: SuccessPopUpProps) {
   return (
     <Stack spacing={2} sx={{ width: "100%" }}>
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
