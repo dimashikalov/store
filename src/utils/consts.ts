@@ -4,4 +4,4 @@ export const MAIN_ROUTE = "/";
 export const LOGIN_ROUTE = "/login";
 export const CATEGORIES_ROUTE = "/category";
 export const PRODUCTS_ITEM_ROUTE = "/products";
-export const REGISTRATION_ROUTE = "/registration";
+export const ABOUT_ROUTE = "/about";

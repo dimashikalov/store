@@ -9,6 +9,7 @@ import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import LeftMenu from "./app-bar-components/LeftMenu";
 import { MAIN_ROUTE } from "../../utils/consts";
+import AboutButton from "./app-bar-components/AboutButton";
 
 ////
 
@@ -35,7 +36,7 @@ export default function PrimarySearchAppBar() {
             </Typography>
 
             <SearchComp />
-
+            <AboutButton />
             <Box sx={{ flexGrow: 1 }} />
 
             <RightButtons />

@@ -1,3 +1,4 @@
+import AboutPage from "../pages/AboutPage";
 import BasketPage from "../pages/BasketPage";
 import CategoriesPage from "../pages/CategoriesPage";
 import LoginPage from "../pages/LoginPage";
@@ -11,7 +12,7 @@ import {
   MAIN_ROUTE,
   PRODUCTS_ITEM_ROUTE,
   PROFILE_ROUTE,
-  REGISTRATION_ROUTE,
+  ABOUT_ROUTE,
 } from "../utils/consts";
 
 export const authRoutes = [
@@ -41,6 +42,10 @@ export const publicRoutes = [
   {
     path: BASKET_ROUTE,
     Element: BasketPage,
+  },
+  {
+    path: ABOUT_ROUTE,
+    Element: AboutPage,
   },
   {
     path: "*",
