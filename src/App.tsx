@@ -1,11 +1,13 @@
-import { useContext, useEffect } from "react";
+import { lazy, useContext, useEffect, Suspense } from "react";
 import SearchAppBar from "./components/AppBar/AppBar";
-import AppRouter from "./components/AppRouter";
+// import AppRouter from "./components/AppRouter";
 import {
   fetchCategories,
   fetchProducts,
 } from "./store/products/productsActionCreator";
 import { useAppDispatch } from "./hooks/redux";
+
+const AppRouter = lazy(() => import("./components/AppRouter"));
 
 function App() {
   const dispatch = useAppDispatch();
@@ -18,7 +20,9 @@ function App() {
   return (
     <>
       <SearchAppBar />
-      <AppRouter />
+      <Suspense>
+        <AppRouter />
+      </Suspense>
     </>
   );
 }

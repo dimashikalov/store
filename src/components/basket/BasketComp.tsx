@@ -13,7 +13,6 @@ const BasketComp: FC = () => {
   const { auth } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
 
   const totalCost: number = useMemo(() => {
     let result = basketItems.reduce((sum: number, item: IBasketItem) => {

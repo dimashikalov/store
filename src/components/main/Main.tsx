@@ -1,11 +1,15 @@
 import { Container, Grid, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { CardList } from "../cardList/CardList";
+// import { CardList } from "../cardList/CardList";
 import Loader from "../loader/Loader";
-import { FC, useEffect, useState } from "react";
+import { FC, Suspense, lazy, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getCurrentArrayWithProducts } from "../../store/products/productsActionCreator";
 import { IProduct } from "../../models/IProduct";
+
+const CardList = lazy(() =>
+  import("../cardList/CardList").then(({ CardList }) => ({ default: CardList }))
+);
 
 const Main: FC = () => {
   const { workArray, isLoading, error } = useAppSelector(
@@ -30,12 +34,14 @@ const Main: FC = () => {
         Главная страница магазина
       </Typography>
       <Grid container>
-        <CardList arrayProducts={currentArray} />
-        {isLoading && (
-          <Grid container justifyContent="center" alignItems="center">
-            <Loader />
-          </Grid>
-        )}
+        <Suspense>
+          <CardList arrayProducts={currentArray} />
+          {isLoading && (
+            <Grid container justifyContent="center" alignItems="center">
+              <Loader />
+            </Grid>
+          )}
+        </Suspense>
         {currentArray.length === 0 && (
           <Typography>Sorry, no matches to your search</Typography>
         )}
