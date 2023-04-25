@@ -18,7 +18,7 @@ import { authSlice } from "../../../store/auth/authSlice";
 ////
 const RightButtons: FC = () => {
   const { auth } = useAppSelector((state) => state.auth);
-  const { basketItems } = useBasketContext();
+  const { basketItems, setBasketItemsList } = useBasketContext();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -28,29 +28,29 @@ const RightButtons: FC = () => {
 
   const handleAuthExit = () => {
     dispatch(authSlice.actions.authExit());
+    setBasketItemsList?.([]);
   };
   return (
     <>
+      <IconButton
+        size="large"
+        aria-label="show 17 new notifications"
+        color="inherit"
+        onClick={() => handleNavigateClick(BASKET_ROUTE)}
+      >
+        <Badge
+          badgeContent={basketItems.length ? basketItems.length : 0}
+          color="error"
+        >
+          <ShoppingCartIcon />
+        </Badge>
+      </IconButton>
       {auth ? (
         <Box
           sx={{
             display: { xs: "none", md: "flex" },
           }}
         >
-          <IconButton
-            size="large"
-            aria-label="show 17 new notifications"
-            color="inherit"
-            onClick={() => handleNavigateClick(BASKET_ROUTE)}
-          >
-            <Badge
-              badgeContent={basketItems.length ? basketItems.length : 0}
-              color="error"
-            >
-              <ShoppingCartIcon />
-            </Badge>
-          </IconButton>
-
           <IconButton
             size="large"
             edge="end"
@@ -75,7 +75,7 @@ const RightButtons: FC = () => {
           </IconButton>
         </Box>
       ) : (
-        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+        <Box sx={{ display: { xs: "none", md: "flex", marginLeft: "15px" } }}>
           <Button
             variant="outlined"
             color="inherit"

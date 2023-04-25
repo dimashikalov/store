@@ -19,10 +19,6 @@ export const authRoutes = [
     path: PROFILE_ROUTE,
     Element: ProfilePage,
   },
-  {
-    path: BASKET_ROUTE,
-    Element: BasketPage,
-  },
 ];
 
 export const publicRoutes = [
@@ -41,6 +37,10 @@ export const publicRoutes = [
   {
     path: PRODUCTS_ITEM_ROUTE + "/:id",
     Element: ProductItemPage,
+  },
+  {
+    path: BASKET_ROUTE,
+    Element: BasketPage,
   },
   {
     path: "*",

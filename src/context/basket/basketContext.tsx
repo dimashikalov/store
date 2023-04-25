@@ -6,6 +6,7 @@ export const BasketContext = React.createContext<IBasketContext>({
   basketItems: [],
   addBasketItem: () => null,
   deleteBasketItem: () => null,
+  setBasketItemsList: () => null,
 });
 
 interface IBasketProvider {
@@ -59,7 +60,12 @@ const BasketProvider: FC<IBasketProvider> = ({ children }) => {
   };
   return (
     <BasketContext.Provider
-      value={{ basketItems, addBasketItem, deleteBasketItem }}
+      value={{
+        basketItems,
+        addBasketItem,
+        deleteBasketItem,
+        setBasketItemsList,
+      }}
     >
       {children}
     </BasketContext.Provider>
