@@ -7,6 +7,7 @@ const AppRouter = () => {
   const { auth } = useAppSelector((state) => state.auth);
 
   const navigate = useNavigate();
+  console.log("pr", process.env);
   return (
     <Routes>
       {auth &&

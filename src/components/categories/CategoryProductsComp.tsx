@@ -19,7 +19,6 @@ const CategoryProductsComp: FC = () => {
   const dispatch = useAppDispatch();
 
   const location = useLocation();
-  console.log("loc", location);
 
   useEffect(() => {
     if (params.id) {
